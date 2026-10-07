@@ -27,6 +27,8 @@
   --accent: #f59e0b;      /* Serengeti amber */
   --accent-2: #2dd4bf;    /* Zanzibar teal */
   --accent-3: #fb7185;
+  --c1: #f59e0b; --c2: #2dd4bf; --c3: #fb7185; --c4: #818cf8; --seat-ink: #0b0d12;
+  --danger: #ef4444;
   --glow: rgba(245,158,11,.25);
   --shadow: 0 20px 50px rgba(0,0,0,.45);
   --radius: 18px;
@@ -44,6 +46,8 @@
   --accent: #d97706;
   --accent-2: #0d9488;
   --accent-3: #e11d48;
+  --c1: #b45309; --c2: #0f766e; --c3: #be123c; --c4: #4338ca; --seat-ink: #ffffff;
+  --danger: #dc2626;
   --glow: rgba(217,119,6,.18);
   --shadow: 0 20px 40px rgba(30,25,10,.10);
   --nav-bg: rgba(247,245,240,.8);
@@ -246,6 +250,53 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .browser-body .overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.0); opacity: 0; transition: opacity .3s, background .3s; text-decoration: none; }
 .browser:hover .overlay { opacity: 1; background: rgba(0,0,0,.45); }
 
+/* ---------- Exam seating demo ---------- */
+.demo { margin-top: 2.5rem; background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 2.4rem; display: grid; gap: 2rem; }
+.demo-head { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; align-items: flex-end; }
+.demo-head h3 { font: 700 clamp(1.6rem, 3vw, 2.1rem)/1.15 'Space Grotesk', sans-serif; margin: .8rem 0 .5rem; }
+.demo-head p { color: var(--text-2); max-width: 620px; }
+.badge.private { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 40%, transparent); background: color-mix(in srgb, var(--accent-2) 10%, transparent); }
+.demo-body { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: start; }
+.demo-body > * { min-width: 0; }
+.ctrl { display: grid; gap: 1.2rem; }
+.ctrl-label { font: 500 .72rem 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .5rem; display: block; }
+.ctrl select, .ctrl input[type="search"] { width: 100%; padding: .7rem .9rem; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-2); color: var(--text); font: inherit; font-size: .92rem; }
+.ctrl select:focus, .ctrl input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+.cls-list { display: grid; gap: .45rem; }
+.cls { display: grid; grid-template-columns: 12px 1fr auto; gap: .7rem; align-items: center; padding: .45rem .5rem .45rem .8rem; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line); font-size: .9rem; }
+.swatch { width: 12px; height: 12px; border-radius: 4px; }
+.stepper { display: flex; align-items: center; gap: .2rem; }
+.stepper button { width: 30px; height: 30px; border-radius: 9px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; font: 600 1rem 'JetBrains Mono', monospace; }
+.stepper button:hover { border-color: var(--accent); }
+.stepper output { min-width: 2.2ch; text-align: center; font: 500 .9rem 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line); gap: 4px; }
+.seg button { padding: .55rem .4rem; border-radius: 9px; border: 0; background: none; color: var(--text-2); cursor: pointer; font: 500 .84rem 'Inter', sans-serif; }
+.seg button.on { background: var(--card); color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.hall-wrap { display: grid; gap: 1rem; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; }
+.kpi { padding: .8rem 1rem; border-radius: 14px; background: var(--bg-2); border: 1px solid var(--line); }
+.kpi small { display: block; font: 500 .68rem 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi b { font: 700 1.5rem 'Space Grotesk', sans-serif; font-variant-numeric: tabular-nums; }
+.kpi.bad b { color: var(--danger); }
+.kpi.good b { color: var(--accent-2); }
+.hall { background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; padding: 1rem; overflow-x: auto; }
+.front { text-align: center; font: 500 .7rem 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: .45rem; border: 1px dashed var(--line); border-radius: 10px; margin-bottom: 1rem; }
+.seats { display: grid; gap: 6px; min-width: max-content; margin: 0 auto; width: max-content; }
+.seat { width: 38px; height: 34px; border-radius: 8px 8px 5px 5px; border: 1px solid var(--line); background: var(--card); display: grid; place-items: center; font: 500 .62rem 'JetBrains Mono', monospace; color: var(--seat-ink); cursor: pointer; padding: 0; transition: transform .25s, background .3s, opacity .3s, box-shadow .2s; }
+.seat.empty { color: var(--muted); cursor: default; }
+.seat.pop { animation: seatIn .35s cubic-bezier(.2,.8,.2,1.3) both; }
+@keyframes seatIn { from { transform: scale(.4); opacity: 0; } }
+.seat.conflict { box-shadow: 0 0 0 2px var(--danger); }
+.seat.found { box-shadow: 0 0 0 3px var(--text); transform: scale(1.15); z-index: 1; }
+.seat.dim { opacity: .25; }
+.seat:not(.empty):hover { transform: translateY(-2px); }
+.legend { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; font-size: .82rem; color: var(--text-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: .45rem; }
+.legend .ring { width: 12px; height: 12px; border-radius: 4px; box-shadow: 0 0 0 2px var(--danger); }
+.seat-info { min-height: 1.6em; font: .85rem 'JetBrains Mono', monospace; color: var(--text-2); }
+.seat-info b { color: var(--text); font-weight: 500; }
+.demo-note { font-size: .8rem; color: var(--muted); }
+
 /* ---------- Projects ---------- */
 .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .chip {
@@ -386,6 +437,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
+  .demo-body { grid-template-columns: 1fr; }
   .hero-grid, .featured, .about, .contact, .skills { grid-template-columns: 1fr; }
   .hero-visual { max-width: 520px; }
   .featured { padding: 2rem; }
@@ -394,6 +446,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
   .avatar-wrap { max-width: 280px; }
 }
 @media (max-width: 760px) {
+  .demo { padding: 1.4rem 1rem; }
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .seat { width: 30px; height: 28px; font-size: .55rem; }
+  .seats { gap: 4px; }
   section { padding: 5rem 16px; }
   .nav, .nav.scrolled { padding-left: 16px; padding-right: 16px; }
   .burger { display: inline-flex; }
@@ -525,6 +581,55 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           </div>
           <img class="shot" src="assets/abria.png" alt="Screenshot of the Abria Logistics website" loading="lazy" onerror="this.remove()">
           <a class="overlay" href="https://abrialogistics.co.tz" target="_blank" rel="noopener"><span class="btn btn-primary">Open site <span data-i="external"></span></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo reveal" id="exam-demo">
+      <div class="demo-head">
+        <div>
+          <span class="badge private"><span data-i="lock"></span> Live on private college servers</span>
+          <h3>Exam Sitting Plan System</h3>
+          <p>The production system runs privately for Arusha Technical College, so here is its core engine as a playable demo. Pick a venue, set class sizes and generate a plan: no two students from the same class sit side by side or front to back.</p>
+        </div>
+        <button class="btn btn-primary magnetic" id="genBtn">Generate plan <span data-i="arrowRight"></span></button>
+      </div>
+      <div class="demo-body">
+        <div class="ctrl">
+          <div>
+            <label class="ctrl-label" for="venue">Venue</label>
+            <select id="venue"></select>
+          </div>
+          <div>
+            <span class="ctrl-label">Candidates per class</span>
+            <div class="cls-list" id="clsList"></div>
+          </div>
+          <div>
+            <span class="ctrl-label">Allocation</span>
+            <div class="seg" id="mode" role="radiogroup" aria-label="Allocation method">
+              <button class="on" data-mode="smart" role="radio" aria-checked="true">Smart (system)</button>
+              <button data-mode="random" role="radio" aria-checked="false">Random (manual)</button>
+            </div>
+          </div>
+          <div>
+            <label class="ctrl-label" for="findSeat">Find a candidate</label>
+            <input type="search" id="findSeat" placeholder="e.g. CS2-014" autocomplete="off">
+          </div>
+          <p class="demo-note">Sample data for demonstration. Class codes and candidate numbers are illustrative.</p>
+        </div>
+        <div class="hall-wrap">
+          <div class="kpis">
+            <div class="kpi"><small>Seated</small><b id="kSeated">0</b></div>
+            <div class="kpi"><small>Capacity</small><b id="kCap">0</b></div>
+            <div class="kpi" id="kUnseatedBox"><small>Unseated</small><b id="kUnseated">0</b></div>
+            <div class="kpi" id="kConfBox"><small>Neighbour clashes</small><b id="kConf">0</b></div>
+          </div>
+          <div class="hall">
+            <div class="front">Front · Invigilator desk</div>
+            <div class="seats" id="seats"></div>
+          </div>
+          <div class="legend" id="legend"></div>
+          <div class="seat-info" id="seatInfo" aria-live="polite">Hover or tap a seat to see who sits there.</div>
         </div>
       </div>
     </div>
@@ -700,9 +805,9 @@ const PROJECTS = [
     tags: ['Web Design', 'Responsive', 'SEO'],
     body: 'Designed and built the official website for Abria Logistics, a logistics company in Tanzania. The goal was a clean, credible online presence that explains their services clearly and makes it effortless for prospective clients to get in touch.',
     points: ['Mobile-first responsive layout', 'Service pages and clear calls-to-action', 'Contact / quote enquiry flow', 'Optimised for speed and search engines', 'Deployed on a custom .co.tz domain'] },
-  { id: 'exam', title: 'Exam Sitting Plan System', icon: 'clipboard', cat: 'web', status: 'In progress',
+  { id: 'exam', title: 'Exam Sitting Plan System', icon: 'clipboard', cat: 'web', status: 'Live · private', demo: '#exam-demo',
     short: 'Automated exam seating for Arusha Technical College that optimises scheduling and prevents cheating.',
-    tags: ['Django', 'Python', 'PostgreSQL'],
+    tags: ['Django', 'Python', 'Algorithms'],
     body: 'An automated solution for Arusha Technical College that generates exam sitting plans. It allocates students to rooms and seats while separating candidates from the same class to reduce cheating, and removes hours of manual planning.',
     points: ['Room & capacity management', 'Smart seat allocation algorithm', 'Printable seating charts per venue', 'Role-based access for exam officers'] },
   { id: 'pharma', title: 'PharmaCare', icon: 'pill', cat: 'web', status: 'In progress',
@@ -873,7 +978,7 @@ grid.innerHTML = PROJECTS.map(p => `
   <button class="card tilt reveal" data-cat="${p.cat}" data-open="${p.id}" aria-label="Open details for ${p.title}">
     <div class="card-top">
       <div class="card-icon">${ic(p.icon)}</div>
-      ${p.status ? `<span class="badge ${p.status === 'Live' ? 'live' : ''}">${p.status === 'Live' ? '<span class="dot"></span>' : ''}${p.status}</span>` : ''}
+      ${p.status ? `<span class="badge ${p.status.startsWith('Live') ? 'live' : ''}">${p.status.startsWith('Live') ? '<span class="dot"></span>' : ''}${p.status}</span>` : ''}
     </div>
     <h3>${p.title}</h3>
     <p>${p.short}</p>
@@ -908,7 +1013,7 @@ function openProject(id) {
     <p>${p.body}</p>
     <h4>Highlights</h4>
     <ul class="check">${p.points.map(x => `<li>${x}</li>`).join('')}</ul>
-    ${p.url ? `<a class="btn btn-primary" href="${p.url}" target="_blank" rel="noopener">Visit ${p.url.replace(/^https?:\/\//, '')} ${ic('external')}</a>` : `<a class="btn" href="#contact" data-close>Ask me about this project</a>`}`;
+    ${p.demo ? `<a class="btn btn-primary" href="${p.demo}" data-close>Try the interactive demo ${ic('arrowRight')}</a>` : p.url ? `<a class="btn btn-primary" href="${p.url}" target="_blank" rel="noopener">Visit ${p.url.replace(/^https?:\/\//, '')} ${ic('external')}</a>` : `<a class="btn" href="#contact" data-close>Ask me about this project</a>`}`;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   $('#modalClose').focus();
@@ -1062,6 +1167,139 @@ $('#contactForm').addEventListener('submit', e => {
   location.href = `mailto:shedrackmaeda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   toast('Opening your email app…');
 });
+
+/* =========================================================
+   Exam seating demo
+   ========================================================= */
+(function examDemo() {
+  const VENUES = [
+    { name: 'Main Hall', rows: 8, cols: 10 },
+    { name: 'Lecture Room B', rows: 6, cols: 8 },
+    { name: 'Computer Lab', rows: 5, cols: 7 },
+  ];
+  const CLASSES = [
+    { code: 'CS2', name: 'Computer Sci Yr 2', n: 22, color: 'var(--c1)' },
+    { code: 'IT1', name: 'Information Tech Yr 1', n: 18, color: 'var(--c2)' },
+    { code: 'EE2', name: 'Electrical Eng Yr 2', n: 16, color: 'var(--c3)' },
+    { code: 'CE1', name: 'Civil Eng Yr 1', n: 12, color: 'var(--c4)' },
+  ];
+  let venue = VENUES[0], mode = 'smart', plan = [];
+  const seatsEl = $('#seats');
+
+  $('#venue').innerHTML = VENUES.map((v, i) => `<option value="${i}">${v.name} · ${v.rows} × ${v.cols} (${v.rows * v.cols} seats)</option>`).join('');
+  $('#clsList').innerHTML = CLASSES.map((c, i) => `
+    <div class="cls"><span class="swatch" style="background:${c.color}"></span><span>${c.code} <small style="color:var(--muted)">${c.name}</small></span>
+      <span class="stepper"><button type="button" data-step="-2" data-c="${i}" aria-label="Fewer ${c.code} candidates">−</button><output id="out${i}">${c.n}</output><button type="button" data-step="2" data-c="${i}" aria-label="More ${c.code} candidates">+</button></span></div>`).join('');
+  $('#legend').innerHTML = CLASSES.map(c => `<span><span class="swatch" style="background:${c.color}"></span>${c.code}</span>`).join('') + '<span><span class="ring"></span>Same-class neighbour</span>';
+
+  const rowName = r => String.fromCharCode(65 + r);
+  const label = s => `${CLASSES[s.c].code}-${String(s.k).padStart(3, '0')}`;
+
+  function allocate() {
+    const { rows, cols } = venue, total = rows * cols;
+    const grid = new Array(total).fill(null);
+    const next = CLASSES.map(() => 1);
+    if (mode === 'random') {
+      const all = CLASSES.flatMap((c, i) => Array.from({ length: c.n }, () => i));
+      for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
+      all.slice(0, total).forEach((c, i) => { grid[i] = { c, k: next[c]++ }; });
+    } else {
+      // Greedy, row by row: pick the class with the most candidates left that
+      // differs from the seat to the left and the seat in front.
+      const left = CLASSES.map(c => c.n);
+      for (let i = 0; i < total; i++) {
+        const r = Math.floor(i / cols), col = i % cols;
+        const ban = new Set();
+        if (col > 0 && grid[i - 1]) ban.add(grid[i - 1].c);
+        if (r > 0 && grid[i - cols]) ban.add(grid[i - cols].c);
+        let best = -1;
+        left.forEach((n, c) => { if (n > 0 && !ban.has(c) && (best < 0 || n > left[best])) best = c; });
+        if (best >= 0) { grid[i] = { c: best, k: next[best]++ }; left[best]--; }
+      }
+    }
+    return grid;
+  }
+
+  function conflicts(grid) {
+    const { rows, cols } = venue, bad = new Set(); let pairs = 0;
+    for (let i = 0; i < grid.length; i++) {
+      if (!grid[i]) continue;
+      const col = i % cols;
+      for (const j of [col < cols - 1 ? i + 1 : -1, i + cols < rows * cols ? i + cols : -1]) {
+        if (j >= 0 && grid[j] && grid[j].c === grid[i].c) { pairs++; bad.add(i); bad.add(j); }
+      }
+    }
+    return { pairs, bad };
+  }
+
+  function render(animate) {
+    plan = allocate();
+    const { pairs, bad } = conflicts(plan);
+    const demand = CLASSES.reduce((a, c) => a + c.n, 0);
+    const seated = plan.filter(Boolean).length;
+    seatsEl.style.gridTemplateColumns = `repeat(${venue.cols}, auto)`;
+    seatsEl.innerHTML = plan.map((s, i) => {
+      const r = Math.floor(i / venue.cols), c = i % venue.cols;
+      const pos = `Row ${rowName(r)}, seat ${c + 1}`;
+      const delay = animate && !reduceMotion ? `animation-delay:${(r + c) * 22}ms;` : '';
+      return s
+        ? `<button class="seat ${animate ? 'pop' : ''} ${bad.has(i) ? 'conflict' : ''}" style="background:${CLASSES[s.c].color};${delay}" data-s="${i}" data-pos="${pos}" aria-label="${label(s)}, ${pos}">${s.k}</button>`
+        : `<span class="seat empty ${animate ? 'pop' : ''}" style="${delay}" data-pos="${pos}" aria-hidden="true">·</span>`;
+    }).join('');
+    $('#kSeated').textContent = seated;
+    $('#kCap').textContent = venue.rows * venue.cols;
+    $('#kUnseated').textContent = demand - seated;
+    $('#kUnseatedBox').className = 'kpi' + (demand - seated > 0 ? ' bad' : '');
+    $('#kConf').textContent = pairs;
+    $('#kConfBox').className = 'kpi ' + (pairs ? 'bad' : 'good');
+    $('#seatInfo').innerHTML = demand > seated
+      ? `<b>${demand - seated}</b> candidates need another venue. Try the Main Hall or fewer candidates.`
+      : mode === 'smart' ? `Plan ready: <b>${seated}</b> candidates seated with <b>${pairs}</b> same-class neighbours.`
+      : `Random seating left <b>${pairs}</b> pairs of classmates side by side. Switch to Smart to fix it.`;
+    find();
+  }
+
+  function find() {
+    const q = $('#findSeat').value.trim().toUpperCase();
+    $$('.seat', seatsEl).forEach(el => el.classList.remove('found', 'dim'));
+    if (!q) return;
+    const i = plan.findIndex(s => s && label(s) === q);
+    $$('.seat', seatsEl).forEach(el => el.classList.toggle('dim', +el.dataset.s !== i));
+    if (i >= 0) {
+      const el = seatsEl.querySelector(`[data-s="${i}"]`);
+      el.classList.add('found');
+      $('#seatInfo').innerHTML = `<b>${q}</b> sits at ${el.dataset.pos} in ${venue.name}.`;
+    } else {
+      $('#seatInfo').textContent = `${q} is not in this plan. Codes look like CS2-014.`;
+    }
+  }
+
+  function showSeat(e) {
+    const el = e.target.closest('.seat[data-s]'); if (!el) return;
+    const s = plan[+el.dataset.s];
+    $('#seatInfo').innerHTML = `<b>${label(s)}</b> · ${CLASSES[s.c].name} · ${el.dataset.pos}`;
+  }
+  seatsEl.addEventListener('pointerover', showSeat);
+  seatsEl.addEventListener('click', showSeat);
+
+  $('#venue').addEventListener('change', e => { venue = VENUES[+e.target.value]; render(true); });
+  $('#clsList').addEventListener('click', e => {
+    const b = e.target.closest('[data-step]'); if (!b) return;
+    const c = CLASSES[+b.dataset.c];
+    c.n = Math.max(0, Math.min(60, c.n + +b.dataset.step));
+    $('#out' + b.dataset.c).textContent = c.n;
+    render(false);
+  });
+  $('#mode').addEventListener('click', e => {
+    const b = e.target.closest('[data-mode]'); if (!b) return;
+    mode = b.dataset.mode;
+    $$('#mode button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b); });
+    render(true);
+  });
+  $('#genBtn').addEventListener('click', () => render(true));
+  $('#findSeat').addEventListener('input', find);
+  render(false);
+})();
 
 /* =========================================================
    Interactive terminal
