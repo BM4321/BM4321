@@ -67,6 +67,7 @@ a { color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
 .mono { font-family: 'JetBrains Mono', monospace; }
+.i { width: 1.1em; height: 1.1em; flex: none; vertical-align: -.17em; }
 .grad {
   background: linear-gradient(120deg, var(--accent), var(--accent-3) 50%, var(--accent-2));
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
@@ -193,6 +194,7 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .code { padding: 1.3rem 1.4rem; font: .86rem/1.8 'JetBrains Mono', monospace; color: var(--text-2); white-space: pre; overflow-x: auto; }
 .code .k { color: var(--accent-3); } .code .s { color: var(--accent-2); } .code .p { color: var(--accent); } .code .c { color: var(--muted); }
 .hero-visual { position: relative; }
+.float-chip .i { color: var(--accent); }
 .float-chip {
   position: absolute; padding: .6rem .9rem; border-radius: 12px; background: var(--card);
   border: 1px solid var(--line); box-shadow: var(--shadow); font-size: .8rem; font-weight: 600;
@@ -232,6 +234,7 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .check li { display: flex; gap: .7rem; color: var(--text-2); font-size: .95rem; }
 .check li::before { content: '→'; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
 .browser { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); box-shadow: var(--shadow); }
+.browser .url .i { color: #22c55e; margin-right: .3rem; }
 .browser .url { flex: 1; margin-left: .6rem; padding: .3rem .8rem; border-radius: 8px; background: var(--bg); color: var(--text-2); font: .75rem 'JetBrains Mono', monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .browser-body { position: relative; aspect-ratio: 16/10; background: var(--bg-2); }
 .browser-body .shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
@@ -267,11 +270,12 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .card:hover::before { opacity: 1; }
 .card.hide { display: none; }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
-.card-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.5rem; background: var(--card-2); border: 1px solid var(--line); }
+.card-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.4rem; color: var(--accent); background: var(--card-2); border: 1px solid var(--line); }
 .card h3 { font: 600 1.25rem 'Space Grotesk', sans-serif; margin-bottom: .55rem; }
 .card p { color: var(--text-2); font-size: .93rem; margin-bottom: 1.2rem; flex: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tag { font: 500 .72rem 'JetBrains Mono', monospace; padding: .25rem .6rem; border-radius: 7px; background: var(--bg-2); color: var(--text-2); border: 1px solid var(--line); }
+.card .more .i, .btn .i { width: 1em; height: 1em; }
 .card .more { margin-top: 1.2rem; font: 500 .82rem 'JetBrains Mono', monospace; color: var(--accent); }
 
 /* ---------- Skills ---------- */
@@ -286,7 +290,9 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .skill-tab:hover { color: var(--text); }
 .skill-tab.on { border-color: var(--accent); color: var(--text); background: linear-gradient(90deg, var(--glow), var(--card) 70%); }
 .skill-panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; min-height: 340px; }
-.skill-panel h3 { font: 600 1.4rem 'Space Grotesk', sans-serif; margin-bottom: .4rem; }
+.skill-panel h3 { font: 600 1.4rem 'Space Grotesk', sans-serif; margin-bottom: .4rem; display: flex; align-items: center; gap: .6rem; }
+.skill-panel h3 .i, .skill-tab .i { color: var(--accent); }
+.skill-tab span { display: inline-flex; align-items: center; gap: .55rem; }
 .skill-panel > p { color: var(--text-2); margin-bottom: 1.8rem; }
 .bars { display: grid; gap: 1.1rem; }
 .bar-row { display: grid; grid-template-columns: 150px 1fr 44px; gap: 1rem; align-items: center; font-size: .92rem; }
@@ -310,7 +316,7 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
 .cert { display: flex; gap: 1rem; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.1rem 1.2rem; transition: transform .25s, border-color .25s; }
 .cert:hover { transform: translateY(-4px); border-color: var(--accent-2); }
-.cert .ic { font-size: 1.5rem; width: 46px; height: 46px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--bg-2); }
+.cert .ic { font-size: 1.3rem; color: var(--accent-2); width: 46px; height: 46px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--bg-2); }
 .cert h4 { font-size: .95rem; font-weight: 600; line-height: 1.3; }
 .cert span { font-size: .8rem; color: var(--muted); }
 
@@ -334,7 +340,7 @@ h2 { font: 700 clamp(2rem, 4.5vw, 3rem)/1.1 'Space Grotesk', sans-serif; margin-
 .contact-links { display: grid; gap: .8rem; margin-top: 2rem; }
 .c-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border-radius: 14px; border: 1px solid var(--line); background: var(--card); text-decoration: none; transition: border-color .25s, transform .25s; }
 .c-link:hover { border-color: var(--accent); transform: translateX(6px); }
-.c-link .ic { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: var(--bg-2); font-size: 1.15rem; }
+.c-link .ic { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: var(--bg-2); font-size: 1.15rem; color: var(--accent); flex: none; }
 .c-link small { display: block; color: var(--muted); font-size: .78rem; }
 .c-link .copy { margin-left: auto; font: .72rem 'JetBrains Mono', monospace; color: var(--muted); }
 form.card { cursor: default; gap: 1rem; }
@@ -447,9 +453,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         <span class="line grad">I build things for the web.</span>
       </h1>
       <div class="typed-row" aria-live="polite"><span style="color:var(--accent)">$</span> <span id="typed"></span><span class="caret"></span></div>
-      <p class="intro">Full-stack developer, Data Science &amp; AI student and designer from Arusha, Tanzania 🇹🇿 — shipping real products for real businesses, like <a href="https://abrialogistics.co.tz" target="_blank" rel="noopener" style="color:var(--accent)">Abria Logistics</a>.</p>
+      <p class="intro">Full-stack developer, Data Science &amp; AI student and designer from Arusha, Tanzania — shipping real products for real businesses, like <a href="https://abrialogistics.co.tz" target="_blank" rel="noopener" style="color:var(--accent)">Abria Logistics</a>.</p>
       <div class="cta">
-        <a href="#work" class="btn btn-primary magnetic">View my work <span aria-hidden="true">↓</span></a>
+        <a href="#work" class="btn btn-primary magnetic">View my work <span data-i="arrowDown"></span></a>
         <a href="#contact" class="btn magnetic">Let's talk</a>
       </div>
       <div class="stats">
@@ -475,8 +481,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
 <span class="c"># press "/" to open my terminal</span></div>
       </div>
-      <div class="float-chip a">🚚 abrialogistics.co.tz</div>
-      <div class="float-chip b">🤖 Data · AI · ML</div>
+      <div class="float-chip a"><span data-i="truck"></span> abrialogistics.co.tz</div>
+      <div class="float-chip b"><span data-i="cpu"></span> Data · AI · ML</div>
     </div>
   </div>
   <a href="#work" class="scroll-hint" style="text-decoration:none">scroll<span></span></a>
@@ -505,20 +511,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           <li>Live on a custom .co.tz domain</li>
         </ul>
         <div class="cta">
-          <a class="btn btn-primary magnetic" href="https://abrialogistics.co.tz" target="_blank" rel="noopener">Visit live site ↗</a>
+          <a class="btn btn-primary magnetic" href="https://abrialogistics.co.tz" target="_blank" rel="noopener">Visit live site <span data-i="external"></span></a>
           <button class="btn magnetic" data-open="abria">Case study</button>
         </div>
       </div>
       <div class="browser tilt">
-        <div class="window-bar"><i></i><i></i><i></i><span class="url">🔒 abrialogistics.co.tz</span></div>
+        <div class="window-bar"><i></i><i></i><i></i><span class="url"><span data-i="lock"></span>abrialogistics.co.tz</span></div>
         <div class="browser-body">
           <div class="mock">
             <div class="bar" style="width:40%"></div>
-            <div class="hero-blk">🚚 Abria Logistics<br><small style="font:500 .8rem Inter;opacity:.75">Logistics · Tanzania</small></div>
+            <div class="hero-blk"><span><span data-i="truck"></span> Abria Logistics</span><small style="font:500 .8rem Inter;opacity:.75">Logistics · Tanzania</small></div>
             <div class="row"><div></div><div></div><div></div></div>
           </div>
           <img class="shot" src="assets/abria.png" alt="Screenshot of the Abria Logistics website" loading="lazy" onerror="this.remove()">
-          <a class="overlay" href="https://abrialogistics.co.tz" target="_blank" rel="noopener"><span class="btn btn-primary">Open site ↗</span></a>
+          <a class="overlay" href="https://abrialogistics.co.tz" target="_blank" rel="noopener"><span class="btn btn-primary">Open site <span data-i="external"></span></span></a>
         </div>
       </div>
     </div>
@@ -573,9 +579,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
       <h2>Code, data &amp; a designer's eye</h2>
       <p>I'm a Computer Science student at Arusha Technical College pursuing Data Science &amp; AI, and a Full-Stack Developer at The Codecamp Academy. I love going deep — from low-level systems and Linux to full-stack web apps and machine learning.</p>
       <p>I pair engineering with design skills in Photoshop, Illustrator and Figma, so what I build works reliably <em>and</em> looks polished. I'm an active member of the ATC Innovation &amp; Entrepreneurship Club.</p>
-      <p>Off the keyboard: cheering for Chelsea FC 💙, catching up on anime, or exploring Tanzania's national parks.</p>
+      <p>Off the keyboard: cheering for Chelsea FC, catching up on anime, or exploring Tanzania's national parks.</p>
       <div class="facts">
-        <div class="fact"><small>Based in</small><b>Ilboru, Arusha 🇹🇿</b></div>
+        <div class="fact"><small>Based in</small><b>Ilboru, Arusha, Tanzania</b></div>
         <div class="fact"><small>Studying</small><b>Data Science &amp; AI</b></div>
         <div class="fact"><small>Currently</small><b>Full-Stack @ Codecamp</b></div>
         <div class="fact"><small>Open to</small><b>Freelance · Internships</b></div>
@@ -592,10 +598,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
       <h2>Let's build <span class="grad">something great</span></h2>
       <p class="lead">Need a website for your business, a data project, or a developer on your team? I usually reply within a day.</p>
       <div class="contact-links">
-        <a class="c-link" href="mailto:shedrackmaeda@gmail.com" data-copy="shedrackmaeda@gmail.com"><span class="ic">✉️</span><div><small>Email</small>shedrackmaeda@gmail.com</div><span class="copy">copy</span></a>
-        <a class="c-link" href="https://wa.me/255765156660" target="_blank" rel="noopener"><span class="ic">💬</span><div><small>WhatsApp / Phone</small>+255 765 156 660</div></a>
-        <a class="c-link" href="https://linkedin.com/in/shedrack-maeda-ab297625b" target="_blank" rel="noopener"><span class="ic">💼</span><div><small>LinkedIn</small>shedrack-maeda</div></a>
-        <a class="c-link" href="https://github.com/BM4321" target="_blank" rel="noopener"><span class="ic">🐙</span><div><small>GitHub</small>@BM4321</div></a>
+        <a class="c-link" href="mailto:shedrackmaeda@gmail.com" data-copy="shedrackmaeda@gmail.com"><span class="ic" data-i="mail"></span><div><small>Email</small>shedrackmaeda@gmail.com</div><span class="copy">copy</span></a>
+        <a class="c-link" href="https://wa.me/255765156660" target="_blank" rel="noopener"><span class="ic" data-i="message"></span><div><small>WhatsApp / Phone</small>+255 765 156 660</div></a>
+        <a class="c-link" href="https://linkedin.com/in/shedrack-maeda-ab297625b" target="_blank" rel="noopener"><span class="ic" data-i="linkedin"></span><div><small>LinkedIn</small>shedrack-maeda</div></a>
+        <a class="c-link" href="https://github.com/BM4321" target="_blank" rel="noopener"><span class="ic" data-i="github"></span><div><small>GitHub</small>@BM4321</div></a>
       </div>
     </div>
     <form class="card reveal" id="contactForm" novalidate>
@@ -614,7 +620,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         </select>
       </div>
       <div class="field"><label for="fMsg">Message</label><textarea id="fMsg" required placeholder="Tell me about your project…"></textarea></div>
-      <button type="submit" class="btn btn-primary magnetic" style="justify-content:center">Send message 🚀</button>
+      <button type="submit" class="btn btn-primary magnetic" style="justify-content:center">Send message <span data-i="send"></span></button>
     </form>
   </div>
 </section>
@@ -622,7 +628,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year"></span> Shedrack Samwel Maeda · Built in Arusha, Tanzania 🇹🇿</span>
+    <span>© <span id="year"></span> Shedrack Samwel Maeda · Built in Arusha, Tanzania</span>
     <span class="mono">psst — press <kbd>/</kbd> for the terminal</span>
   </div>
 </footer>
@@ -630,7 +636,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 <!-- Project modal -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="modal-box">
-    <button class="icon-btn modal-close" id="modalClose" aria-label="Close">✕</button>
+    <button class="icon-btn modal-close" id="modalClose" aria-label="Close"><span data-i="x"></span></button>
     <div id="modalBody"></div>
   </div>
 </div>
@@ -648,51 +654,88 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
 <script>
 /* =========================================================
+   ICONS — line icons from Lucide (ISC licence)
+   ========================================================= */
+const ICONS = {
+  truck: '<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+  clipboard: '<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/>',
+  pill: '<path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  shield: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  lock: '<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>',
+  cpu: '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/>',
+  palette: '<circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/>',
+  flask: '<path d="M10 2v7.31M14 9.3V2M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>',
+  monitor: '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  server: '<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/>',
+  terminal: '<path d="m4 17 6-6-6-6"/><path d="M12 19h8"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.85.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z"/>',
+  cap: '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5M22 10v6"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>',
+  award: '<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>',
+  file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M16 13H8M16 17H8M10 9H8"/>',
+  wrench: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+  trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+  mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+  message: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+  github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
+  send: '<path d="M14.54 21.69a.5.5 0 0 0 .94-.03l6.5-19a.5.5 0 0 0-.64-.64l-19 6.5a.5.5 0 0 0-.02.94l7.93 3.18a2 2 0 0 1 1.11 1.11z"/><path d="m21.85 2.15-10.94 10.94"/>',
+  x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  external: '<path d="M7 7h10v10M7 17 17 7"/>',
+  arrowDown: '<path d="M12 5v14M19 12l-7 7-7-7"/>',
+  arrowRight: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+};
+const ic = name => `<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+document.querySelectorAll('[data-i]').forEach(el => { el.innerHTML = ic(el.dataset.i); });
+
+/* =========================================================
    DATA — edit these arrays to update the site
    ========================================================= */
 const PROJECTS = [
-  { id: 'abria', title: 'Abria Logistics', icon: '🚚', cat: 'web', status: 'Live',
+  { id: 'abria', title: 'Abria Logistics', icon: 'truck', cat: 'web', status: 'Live',
     url: 'https://abrialogistics.co.tz',
     short: 'Company website for a Tanzanian logistics business — services, trust and enquiries.',
     tags: ['Web Design', 'Responsive', 'SEO'],
     body: 'Designed and built the official website for Abria Logistics, a logistics company in Tanzania. The goal was a clean, credible online presence that explains their services clearly and makes it effortless for prospective clients to get in touch.',
     points: ['Mobile-first responsive layout', 'Service pages and clear calls-to-action', 'Contact / quote enquiry flow', 'Optimised for speed and search engines', 'Deployed on a custom .co.tz domain'] },
-  { id: 'exam', title: 'Exam Sitting Plan System', icon: '🗂️', cat: 'web', status: 'In progress',
+  { id: 'exam', title: 'Exam Sitting Plan System', icon: 'clipboard', cat: 'web', status: 'In progress',
     short: 'Automated exam seating for Arusha Technical College that optimises scheduling and prevents cheating.',
     tags: ['Django', 'Python', 'PostgreSQL'],
     body: 'An automated solution for Arusha Technical College that generates exam sitting plans. It allocates students to rooms and seats while separating candidates from the same class to reduce cheating, and removes hours of manual planning.',
     points: ['Room & capacity management', 'Smart seat allocation algorithm', 'Printable seating charts per venue', 'Role-based access for exam officers'] },
-  { id: 'pharma', title: 'PharmaCare', icon: '💊', cat: 'web', status: 'In progress',
+  { id: 'pharma', title: 'PharmaCare', icon: 'pill', cat: 'web', status: 'In progress',
     short: 'IT architecture for a pharmacy inventory and delivery system.',
     tags: ['PHP', 'MySQL', 'JavaScript'],
     body: 'Designing the IT architecture for a pharmacy inventory and delivery platform — tracking stock levels and expiry dates, and managing customer orders through to delivery.',
     points: ['Inventory & expiry tracking', 'Order and delivery management', 'Relational database design in MySQL', 'Admin dashboard'] },
-  { id: 'nexus', title: 'Nexus', icon: '🤝', cat: 'web', status: 'In progress',
+  { id: 'nexus', title: 'Nexus', icon: 'users', cat: 'web', status: 'In progress',
     short: 'A community-driven gig marketplace for skill-sharing among youth.',
     tags: ['Full-Stack', 'React', 'Marketplace'],
     body: 'A community-driven gig marketplace designed to help young people share skills, find small jobs and build a reputation — connecting local talent with local demand.',
     points: ['Gig posting & discovery', 'User profiles and skill tags', 'Ratings to build trust'] },
-  { id: 'ironlock', title: 'IronLock', icon: '🔒', cat: 'mobile', status: 'In progress',
+  { id: 'ironlock', title: 'IronLock', icon: 'shield', cat: 'mobile', status: 'In progress',
     short: 'Android security app focused on digital self-control and content blocking.',
     tags: ['Android', 'Java', 'Security'],
     body: 'An Android application that helps users take back control of their digital habits by blocking distracting or harmful content and enforcing focus rules that are hard to bypass.',
     points: ['App & content blocking', 'Tamper-resistant lock modes', 'Usage insights'] },
-  { id: 'sdms', title: 'Student Data Management', icon: '📊', cat: 'data',
+  { id: 'sdms', title: 'Student Data Management', icon: 'chart', cat: 'data',
     short: 'Data pipeline tracking student progress across training programs with automated reports.',
     tags: ['Python', 'Excel', 'Data Analysis'],
     body: 'Built at E3-Empower Africa: a structured data pipeline to track student progress across training programs, with automated reporting and reliable record maintenance.',
     points: ['Cleaned and unified program datasets', 'Automated progress reports', 'Dashboards for program staff'] },
-  { id: 'ml', title: 'Machine Learning Projects', icon: '🤖', cat: 'data',
+  { id: 'ml', title: 'Machine Learning Projects', icon: 'cpu', cat: 'data',
     short: 'Supervised and unsupervised learning on real-world datasets.',
     tags: ['Python', 'scikit-learn', 'Pandas'],
     body: 'A collection of machine-learning projects applying supervised and unsupervised techniques to real-world datasets, built through the Stanford Machine Learning and Deep Learning specializations.',
     points: ['Regression & classification models', 'Clustering and dimensionality reduction', 'Neural networks', 'Model evaluation & tuning'] },
-  { id: 'brand', title: 'Brand & Media Design', icon: '🎨', cat: 'design',
+  { id: 'brand', title: 'Brand & Media Design', icon: 'palette', cat: 'design',
     short: 'Visual assets and communication materials for E3-Empower Africa programs.',
     tags: ['Photoshop', 'Illustrator', 'Branding'],
     body: 'Created visual identity assets, social media graphics and printed communication materials for E3-Empower Africa and JA-Africa programs.',
     points: ['Social media campaigns', 'Posters & certificates', 'Program branding'] },
-  { id: 'stem', title: 'STEM & Python Workshops', icon: '🧪', cat: 'data',
+  { id: 'stem', title: 'STEM & Python Workshops', icon: 'flask', cat: 'data',
     short: 'Structured Python programming workshops with progress-tracking dashboards.',
     tags: ['Python', 'Teaching', 'STEM'],
     body: 'Facilitated STEM & robotics sessions and structured Python programming workshops for students, building logic-focused curricula and dashboards to track learner progress.',
@@ -702,15 +745,15 @@ const PROJECTS = [
 const CATEGORIES = { all: 'All', web: 'Web', mobile: 'Mobile', data: 'Data & AI', design: 'Design' };
 
 const SKILLS = [
-  { name: 'Frontend', icon: '🖥️', desc: 'Interfaces that are fast, accessible and responsive.',
+  { name: 'Frontend', icon: 'monitor', desc: 'Interfaces that are fast, accessible and responsive.',
     items: [['HTML & CSS', 92], ['JavaScript', 85], ['React', 75], ['Flutter / Dart', 65], ['SwiftUI', 50]] },
-  { name: 'Backend', icon: '⚙️', desc: 'APIs, databases and business logic.',
+  { name: 'Backend', icon: 'server', desc: 'APIs, databases and business logic.',
     items: [['Python / Django', 85], ['PHP', 78], ['MySQL / SQL', 80], ['Java', 70], ['C / C++', 72]] },
-  { name: 'Data & AI', icon: '🧠', desc: 'Turning raw data into insight and models.',
+  { name: 'Data & AI', icon: 'cpu', desc: 'Turning raw data into insight and models.',
     items: [['Python (Pandas)', 85], ['Data Analysis', 85], ['Machine Learning', 72], ['Excel', 88], ['Deep Learning', 60]] },
-  { name: 'Systems & Security', icon: '🛡️', desc: 'Under the hood — Linux, scripting and pentesting.',
+  { name: 'Systems & Security', icon: 'terminal', desc: 'Under the hood — Linux, scripting and pentesting.',
     items: [['Linux', 80], ['Bash / Zsh', 78], ['Git', 85], ['Networking (Cisco)', 65], ['Penetration Testing', 60]] },
-  { name: 'Design', icon: '✏️', desc: 'A designer\'s eye for every product I ship.',
+  { name: 'Design', icon: 'pen', desc: 'A designer\'s eye for every product I ship.',
     items: [['Photoshop', 85], ['Illustrator', 80], ['Figma', 75], ['Inkscape', 70], ['Final Cut', 60]] },
 ];
 
@@ -730,14 +773,14 @@ const EXPERIENCE = [
 ];
 
 const CERTS = [
-  ['🎓', 'Machine Learning Specialization', 'Stanford · Coursera', '2025'],
-  ['🤖', 'Deep Learning Specialization', 'Coursera', '2025'],
-  ['📊', 'IBM Data Analyst', 'IBM · Coursera', '2025'],
-  ['🌐', 'Network Architecture Fundamentals', 'Cisco', '2024'],
-  ['🤝', 'JA Social Equity Program', 'JA Africa', '2024'],
-  ['📜', 'JA Africa Certificate of Completion', 'Junior Achievement', '2024'],
-  ['🔧', 'STEM Workshop Certificate', 'E3-Empower Africa', '2024'],
-  ['🏆', 'Best ICT Student Award', 'Kimaseki Secondary', '2023'],
+  ['cap', 'Machine Learning Specialization', 'Stanford · Coursera', '2025'],
+  ['cpu', 'Deep Learning Specialization', 'Coursera', '2025'],
+  ['chart', 'IBM Data Analyst', 'IBM · Coursera', '2025'],
+  ['globe', 'Network Architecture Fundamentals', 'Cisco', '2024'],
+  ['award', 'JA Social Equity Program', 'JA Africa', '2024'],
+  ['file', 'JA Africa Certificate of Completion', 'Junior Achievement', '2024'],
+  ['wrench', 'STEM Workshop Certificate', 'E3-Empower Africa', '2024'],
+  ['trophy', 'Best ICT Student Award', 'Kimaseki Secondary', '2023'],
 ];
 
 /* =========================================================
@@ -829,13 +872,13 @@ const grid = $('#projectGrid'), filters = $('#filters');
 grid.innerHTML = PROJECTS.map(p => `
   <button class="card tilt reveal" data-cat="${p.cat}" data-open="${p.id}" aria-label="Open details for ${p.title}">
     <div class="card-top">
-      <div class="card-icon">${p.icon}</div>
+      <div class="card-icon">${ic(p.icon)}</div>
       ${p.status ? `<span class="badge ${p.status === 'Live' ? 'live' : ''}">${p.status === 'Live' ? '<span class="dot"></span>' : ''}${p.status}</span>` : ''}
     </div>
     <h3>${p.title}</h3>
     <p>${p.short}</p>
     <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-    <span class="more">view details →</span>
+    <span class="more">view details ${ic('arrowRight')}</span>
   </button>`).join('');
 
 filters.innerHTML = Object.entries(CATEGORIES).map(([k, v]) => {
@@ -859,13 +902,13 @@ function openProject(id) {
   const p = PROJECTS.find(x => x.id === id); if (!p) return;
   lastFocus = document.activeElement;
   $('#modalBody').innerHTML = `
-    <div class="card-icon" style="font-size:1.8rem">${p.icon}</div>
+    <div class="card-icon">${ic(p.icon)}</div>
     <h3 id="mTitle">${p.title}</h3>
     <div class="tags" style="margin-bottom:1.2rem">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
     <p>${p.body}</p>
     <h4>Highlights</h4>
     <ul class="check">${p.points.map(x => `<li>${x}</li>`).join('')}</ul>
-    ${p.url ? `<a class="btn btn-primary" href="${p.url}" target="_blank" rel="noopener">Visit ${p.url.replace(/^https?:\/\//, '')} ↗</a>` : `<a class="btn" href="#contact" data-close>Ask me about this project</a>`}`;
+    ${p.url ? `<a class="btn btn-primary" href="${p.url}" target="_blank" rel="noopener">Visit ${p.url.replace(/^https?:\/\//, '')} ${ic('external')}</a>` : `<a class="btn" href="#contact" data-close>Ask me about this project</a>`}`;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   $('#modalClose').focus();
@@ -884,11 +927,11 @@ modal.addEventListener('click', e => { if (e.target === modal || e.target.closes
    Skills tabs
    ========================================================= */
 const tabs = $('#skillTabs'), panel = $('#skillPanel');
-tabs.innerHTML = SKILLS.map((s, i) => `<button class="skill-tab ${i ? '' : 'on'}" data-i="${i}" role="tab" aria-selected="${!i}"><span>${s.icon} ${s.name}</span><small>${s.items.length}</small></button>`).join('');
+tabs.innerHTML = SKILLS.map((s, i) => `<button class="skill-tab ${i ? '' : 'on'}" data-i="${i}" role="tab" aria-selected="${!i}"><span>${ic(s.icon)} ${s.name}</span><small>${s.items.length}</small></button>`).join('');
 function showSkill(i) {
   const s = SKILLS[i];
   $$('.skill-tab', tabs).forEach((t, j) => { t.classList.toggle('on', j === i); t.setAttribute('aria-selected', j === i); });
-  panel.innerHTML = `<h3>${s.icon} ${s.name}</h3><p>${s.desc}</p><div class="bars">${s.items.map(([n, v]) => `
+  panel.innerHTML = `<h3>${ic(s.icon)} ${s.name}</h3><p>${s.desc}</p><div class="bars">${s.items.map(([n, v]) => `
     <div class="bar-row"><span>${n}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="pct">${v}%</span></div>`).join('')}</div>`;
   requestAnimationFrame(() => requestAnimationFrame(() => $$('.fill', panel).forEach(f => f.style.width = f.dataset.v + '%')));
 }
@@ -905,8 +948,8 @@ $('#timeline').innerHTML = EXPERIENCE.map(x => `
     <div class="t-org">${x.org}</div>
     <ul>${x.points.map(p => `<li>${p}</li>`).join('')}</ul>
   </div>`).join('');
-$('#certs').innerHTML = CERTS.map(([ic, t, by, y]) => `
-  <div class="cert reveal"><div class="ic">${ic}</div><div><h4>${t}</h4><span>${by} · ${y}</span></div></div>`).join('');
+$('#certs').innerHTML = CERTS.map(([icon, t, by, y]) => `
+  <div class="cert reveal"><div class="ic">${ic(icon)}</div><div><h4>${t}</h4><span>${by} · ${y}</span></div></div>`).join('');
 
 /* =========================================================
    Counters
@@ -1007,7 +1050,7 @@ if (finePointer && !reduceMotion) {
 $$('[data-copy]').forEach(a => a.addEventListener('click', e => {
   if (e.target.closest('.copy')) {
     e.preventDefault();
-    navigator.clipboard?.writeText(a.dataset.copy).then(() => toast('Email copied to clipboard ✓'), () => toast(a.dataset.copy));
+    navigator.clipboard?.writeText(a.dataset.copy).then(() => toast('Email copied to clipboard'), () => toast(a.dataset.copy));
   }
 }));
 $('#contactForm').addEventListener('submit', e => {
@@ -1017,7 +1060,7 @@ $('#contactForm').addEventListener('submit', e => {
   const subject = `${type} — enquiry from ${name}`;
   const body = `${msg}\n\n— ${name} (${email})`;
   location.href = `mailto:shedrackmaeda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  toast('Opening your email app… ✉️');
+  toast('Opening your email app…');
 });
 
 /* =========================================================
@@ -1036,25 +1079,25 @@ const COMMANDS = {
   <span class="ok">goto</span> &lt;s&gt;    jump to work | skills | experience | about | contact
   <span class="ok">theme</span>       toggle light / dark
   <span class="ok">whoami</span>      ·  <span class="ok">date</span>  ·  <span class="ok">clear</span>  ·  <span class="ok">exit</span>`),
-  about: () => print('Shedrack Samwel Maeda (BM) — full-stack developer, Data Science & AI student\nat Arusha Technical College, and designer. Based in Arusha, Tanzania 🇹🇿'),
+  about: () => print('Shedrack Samwel Maeda (BM) — full-stack developer, Data Science & AI student\nat Arusha Technical College, and designer. Based in Arusha, Tanzania.'),
   whoami: () => print('bm — builder of things for the web'),
-  projects: () => print(PROJECTS.map(p => `  ${p.icon} <span class="ok">${p.id.padEnd(9)}</span> ${p.title}${p.url ? ` — <a href="${p.url}" target="_blank" rel="noopener">${p.url.replace('https://', '')}</a>` : ''}`).join('\n') + '\n\nType <span class="ok">open &lt;id&gt;</span> for details.'),
+  projects: () => print(PROJECTS.map(p => `  <span class="ok">${p.id.padEnd(9)}</span> ${p.title}${p.url ? ` — <a href="${p.url}" target="_blank" rel="noopener">${p.url.replace('https://', '')}</a>` : ''}`).join('\n') + '\n\nType <span class="ok">open &lt;id&gt;</span> for details.'),
   open: arg => {
     if (!arg) return print('usage: open &lt;project-id&gt;', 'err');
     const p = PROJECTS.find(x => x.id === arg.toLowerCase());
     if (!p) return print(`open: no such project "${arg}" — try <span class="ok">projects</span>`, 'err');
     closeTerm(); openProject(p.id);
   },
-  skills: () => print(SKILLS.map(s => `  ${s.icon} ${s.name.padEnd(19)} ${s.items.map(i => i[0]).join(', ')}`).join('\n')),
-  contact: () => print('  ✉️  <a href="mailto:shedrackmaeda@gmail.com">shedrackmaeda@gmail.com</a>\n  💬  <a href="https://wa.me/255765156660" target="_blank" rel="noopener">+255 765 156 660</a>\n  💼  <a href="https://linkedin.com/in/shedrack-maeda-ab297625b" target="_blank" rel="noopener">linkedin.com/in/shedrack-maeda</a>\n  🐙  <a href="https://github.com/BM4321" target="_blank" rel="noopener">github.com/BM4321</a>'),
+  skills: () => print(SKILLS.map(s => `  ${s.name.padEnd(19)} ${s.items.map(i => i[0]).join(', ')}`).join('\n')),
+  contact: () => print('  email     <a href="mailto:shedrackmaeda@gmail.com">shedrackmaeda@gmail.com</a>\n  whatsapp  <a href="https://wa.me/255765156660" target="_blank" rel="noopener">+255 765 156 660</a>\n  linkedin  <a href="https://linkedin.com/in/shedrack-maeda-ab297625b" target="_blank" rel="noopener">linkedin.com/in/shedrack-maeda</a>\n  github    <a href="https://github.com/BM4321" target="_blank" rel="noopener">github.com/BM4321</a>'),
   goto: arg => ['work', 'skills', 'experience', 'about', 'contact'].includes(arg) ? go(arg) : print('usage: goto work|skills|experience|about|contact', 'err'),
   theme: () => { setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'); print(`theme set to ${root.dataset.theme}`, 'ok'); },
   date: () => print(new Date().toString()),
   clear: () => { out.innerHTML = ''; },
   exit: () => closeTerm(),
-  sudo: () => print('nice try 😄 — permission denied', 'err'),
+  sudo: () => print('nice try — permission denied', 'err'),
   ls: () => print('about.txt  projects/  skills.json  contact.md'),
-  chelsea: () => print('💙 Keep the blue flag flying high! 💙', 'ok'),
+  chelsea: () => print('Keep the blue flag flying high!', 'ok'),
 };
 function run(raw) {
   const line = raw.trim(); if (!line) return;
